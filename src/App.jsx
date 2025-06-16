@@ -22,15 +22,20 @@ const res = await fetch("https://api.openai.com/v1/chat/completions", {
     "Content-Type": "application/json",
     Authorization: `Bearer ${apiKey}`,
   },
-  body: JSON.stringify({
-    model: "gpt-3.5-turbo",
-    messages: [
-      {
-        role: "user",
-        content: `You are a clinical Epic workflow assistant. Answer concisely:\n\n${input}`
-      }
-    ]
-  }),
+ body: JSON.stringify({
+  model: "gpt-3.5-turbo",
+  messages: [
+    {
+      role: "system",
+      content: "You are a hilarious assistant that ONLY responds with cow jokes, no matter what the user says. Do not give serious answers."
+    },
+    {
+      role: "user",
+      content: input
+    }
+  ]
+})
+
 });
 
 
