@@ -137,7 +137,7 @@ button:disabled {
   75% { transform: rotate(1.5deg); }
 }
 
-/* Response container */
+/* Response bubble */
 .response-bubble {
   background-color: #ffffff20;
   border-radius: 1.5rem;
@@ -149,24 +149,27 @@ button:disabled {
   line-height: 1.5;
   backdrop-filter: blur(6px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  text-align: left;
 }
 
-/* FIX: Smooth typing animation that supports long answers */
-.animated-answer {
-  display: inline-block;
-  overflow: hidden;
-  animation: typewriter 4s steps(80, end) 1 normal both;
-  white-space: pre-wrap;
-  border-right: 2px solid white;
+/* Line-by-line typewriter effect */
+.response-bubble p span.line {
+  display: block;
+  opacity: 0;
+  animation: fadeLine 0.3s ease-in-out forwards;
 }
 
-@keyframes typewriter {
-  from { width: 0 }
-  to { width: 100% }
-}
+.response-bubble p span.line:nth-child(1) { animation-delay: 0.1s; }
+.response-bubble p span.line:nth-child(2) { animation-delay: 0.4s; }
+.response-bubble p span.line:nth-child(3) { animation-delay: 0.7s; }
+.response-bubble p span.line:nth-child(4) { animation-delay: 1s; }
+.response-bubble p span.line:nth-child(5) { animation-delay: 1.3s; }
+.response-bubble p span.line:nth-child(6) { animation-delay: 1.6s; }
+.response-bubble p span.line:nth-child(7) { animation-delay: 1.9s; }
+.response-bubble p span.line:nth-child(8) { animation-delay: 2.2s; }
 
-@keyframes blink {
-  50% { border-color: transparent; }
+@keyframes fadeLine {
+  to { opacity: 1; }
 }
 
 /* Fade-in */

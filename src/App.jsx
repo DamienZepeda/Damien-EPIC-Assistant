@@ -5,7 +5,8 @@ const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
 function App() {
   const [input, setInput] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [answerLines, setAnswerLines] = useState([]);
+  const [displayedLines, setDisplayedLines] = useState([]);
   const [loading, setLoading] = useState(false);
   const [bubbleText, setBubbleText] = useState("");
 
@@ -31,7 +32,8 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setAnswer("");
+    setDisplayedLines([]);
+    setAnswerLines([]);
     setBubbleText(thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)]);
 
     try {
@@ -58,27 +60,38 @@ function App() {
       });
 
       const data = await res.json();
-      const gptReply = data.choices?.[0]?.message?.content;
-      setAnswer(gptReply || "No response received.");
+      const fullText = data.choices?.[0]?.message?.content || "No response received.";
+      const lines = fullText.split("\n").filter((line) => line.trim() !== "");
+
+      setAnswerLines(lines);
     } catch (err) {
-      setAnswer("Moo-d alert! Something went wrong. Check your internet or API key.");
+      setAnswerLines(["Moo-d alert! Something went wrong. Check your internet or API key."]);
     } finally {
       setLoading(false);
     }
   };
 
+  useEffect(() => {
+    if (answerLines.length > 0) {
+      let index = 0;
+      const interval = setInterval(() => {
+        setDisplayedLines((prev) => [...prev, answerLines[index]]);
+        index++;
+        if (index >= answerLines.length) clearInterval(interval);
+      }, 600); // adjust delay here if needed
+      return () => clearInterval(interval);
+    }
+  }, [answerLines]);
+
   return (
     <div className="app">
-      {/* Cow speech bubble */}
       {bubbleText && <div className="speech-bubble">{bubbleText}</div>}
 
-      {/* Title */}
       <h1 className="cow-title">
         Your Friendly Neighborhood<br />
-        <span className="cow-wiggle">Cow-sistant</span>
+        <span className="jiggle">Cow-sistant</span>
       </h1>
 
-      {/* Input */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -91,11 +104,12 @@ function App() {
         </button>
       </form>
 
-      {/* Output */}
-      {answer && (
+      {displayedLines.length > 0 && (
         <div className="response-bubble">
           <strong>Answer:</strong>
-          <span className="animated-answer">{answer}</span>
+          {displayedLines.map((line, idx) => (
+            <p key={idx} className="fade-line">{line}</p>
+          ))}
         </div>
       )}
     </div>
