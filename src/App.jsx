@@ -48,7 +48,7 @@ return (
         onChange={(e) => setInput(e.target.value)}
       />
       <button type="submit" disabled={loading}>
-        {loading ? "Thinking..." : "Ask"}
+        {loading ? "Milking the data..." : "Ask"}
       </button>
     </form>
     {answer && (
