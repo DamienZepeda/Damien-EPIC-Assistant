@@ -68,7 +68,10 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="cow-title jiggle">Cow-sistant</h1>
+      <h1 className="cow-title">
+        Your Friendly Neighborhood<br />
+        <span className="jiggle">Cow-sistant</span>
+      </h1>
       <div className="speech-bubble">{bubbleMessage}</div>
 
       <form onSubmit={handleSubmit}>
