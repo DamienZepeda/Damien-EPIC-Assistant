@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 
 const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
@@ -7,7 +7,6 @@ function App() {
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isDay, setIsDay] = useState(false);
   const [thinkingPhrase, setThinkingPhrase] = useState("");
 
   const thinkingPhrases = [
@@ -18,16 +17,13 @@ function App() {
     "Cooking up a mooo-velous answer..."
   ];
 
-  const toggleTheme = () => {
-    setIsDay(!isDay);
-    document.body.className = isDay ? "night" : "day";
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setAnswer("");
-    setThinkingPhrase(thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)]);
+    setThinkingPhrase(
+      thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)]
+    );
 
     try {
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -64,10 +60,6 @@ function App() {
 
   return (
     <div className="app">
-      <button onClick={toggleTheme} className="theme-toggle">
-        {isDay ? "🌙 Barn Night" : "🌞 Pasture Day"}
-      </button>
-
       <h1 className="cow-title">
         Your Friendly Neighborhood<br />Cow-sistant
       </h1>
