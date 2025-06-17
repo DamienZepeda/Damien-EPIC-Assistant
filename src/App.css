@@ -7,7 +7,8 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: url("/Images/cowagent.png") no-repeat center center fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
   color: #f1f1f1;
   min-height: 100vh;
@@ -15,6 +16,17 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  transition: background-image 0.4s ease, color 0.3s ease;
+}
+
+body.theme-dark {
+  background-image: url("/Images/cowagent.png");
+  color: #f1f1f1;
+}
+
+body.theme-light {
+  background-image: url("/Images/cowagent-light.png");
+  color: #222;
 }
 
 /* App container */
@@ -30,7 +42,6 @@ body {
   z-index: 5;
 }
 
-/* Cow-sistant title */
 .cow-title {
   color: #e6f0ff;
   font-size: 2.4rem;
@@ -39,17 +50,16 @@ body {
   margin-bottom: 1.2rem;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.1);
   font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
 }
 
-/* Form layout */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-/* Input */
 input {
   padding: 12px 16px;
   font-size: 1rem;
@@ -63,7 +73,6 @@ input::placeholder {
   color: #aaa;
 }
 
-/* Ask Button */
 .ask-button {
   background-color: #4a90e2;
   color: white;
@@ -75,17 +84,11 @@ input::placeholder {
   transition: box-shadow 0.3s ease;
 }
 
-.ask-button:hover {
-  animation: wiggle 0.3s ease-in-out;
-  box-shadow: 0 0 12px 2px #9cf;
-}
-
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* Wiggle animation */
 @keyframes wiggle {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(1.5deg); }
@@ -93,7 +96,13 @@ button:disabled {
   75% { transform: rotate(1.5deg); }
 }
 
-/* Loading dots (if used) */
+@media (hover: hover) {
+  .ask-button:hover {
+    animation: wiggle 0.3s ease-in-out;
+    box-shadow: 0 0 12px 2px #9cf;
+  }
+}
+
 .loading-dots::after {
   content: " .";
   animation: dots 1.5s steps(3, end) infinite;
@@ -106,14 +115,12 @@ button:disabled {
   100% { content: " ."; }
 }
 
-/* Response container */
 .response {
   margin-top: 1rem;
   font-size: 1.1rem;
   color: #ffffff;
 }
 
-/* Typing animation for answer text */
 .response p {
   overflow: hidden;
   white-space: nowrap;
@@ -130,7 +137,6 @@ button:disabled {
   50% { border-color: transparent }
 }
 
-/* Chat-style response bubble (if used) */
 .response-bubble {
   background-color: #ffffff20;
   border-radius: 1.5rem;
@@ -144,7 +150,7 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* 💬 Speech bubble by cow's ear */
+/* 💬 Speech bubble near cow's ear */
 .speech-bubble {
   position: fixed;
   top: 18%;
@@ -163,7 +169,6 @@ button:disabled {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
-/* Tail pointing down */
 .speech-bubble::after {
   content: "";
   position: absolute;
@@ -174,7 +179,6 @@ button:disabled {
   border-color: rgba(255, 255, 255, 0.12) transparent transparent transparent;
 }
 
-/* Cow hover bounce */
 #cow-image:hover {
   animation: bounce 0.5s ease-in-out;
 }
@@ -184,7 +188,6 @@ button:disabled {
   50% { transform: translateY(-6px); }
 }
 
-/* Optional glow behind cow */
 .cow-glow {
   position: absolute;
   width: 150px;
@@ -196,7 +199,6 @@ button:disabled {
   z-index: 1;
 }
 
-/* Fade animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -207,6 +209,8 @@ button:disabled {
     transform: translateY(0);
   }
 }
+
+/* 🌐 Mobile styles */
 @media (max-width: 600px) {
   .app {
     padding: 1.5rem 1rem;
@@ -215,7 +219,6 @@ button:disabled {
 
   .cow-title {
     font-size: 1.6rem;
-    white-space: normal;
   }
 
   .speech-bubble {
@@ -239,15 +242,5 @@ button:disabled {
   .response-bubble {
     font-size: 0.95rem;
     padding: 0.8rem 1rem;
-  }
-}
-.cow-title {
-  white-space: normal; /* was: nowrap */
-  word-break: break-word;
-}
-@media (hover: hover) {
-  .ask-button:hover {
-    animation: wiggle 0.3s ease-in-out;
-    box-shadow: 0 0 12px 2px #9cf;
   }
 }

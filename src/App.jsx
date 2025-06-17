@@ -26,7 +26,8 @@ function App() {
   ];
 
   useEffect(() => {
-    setBubbleText(greetings[Math.floor(Math.random() * greetings.length)]);
+    const initialGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+    setBubbleText(initialGreeting);
     setShowBubble(true);
   }, []);
 
@@ -34,12 +35,10 @@ function App() {
     e.preventDefault();
     setLoading(true);
     setAnswer("");
-
-    // Hide bubble immediately
-    setShowBubble(false);
+    setShowBubble(false); // hide bubble on submit
 
     const phrase = thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)];
-    setBubbleText(phrase); // still update the phrase in case we want to use it later
+    setBubbleText(phrase); // still update the phrase behind the scenes
 
     try {
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
