@@ -5,8 +5,7 @@ const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
 function App() {
   const [input, setInput] = useState("");
-  const [answerLines, setAnswerLines] = useState([]);
-  const [displayedLines, setDisplayedLines] = useState([]);
+  const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
   const [bubbleText, setBubbleText] = useState("");
 
@@ -32,8 +31,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setDisplayedLines([]);
-    setAnswerLines([]);
+    setAnswer("");
     setBubbleText(thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)]);
 
     try {
@@ -60,28 +58,14 @@ function App() {
       });
 
       const data = await res.json();
-      const fullText = data.choices?.[0]?.message?.content || "No response received.";
-      const lines = fullText.split("\n").filter((line) => line.trim() !== "");
-
-      setAnswerLines(lines);
+      const gptReply = data.choices?.[0]?.message?.content || "No response received.";
+      setAnswer(gptReply);
     } catch (err) {
-      setAnswerLines(["Moo-d alert! Something went wrong. Check your internet or API key."]);
+      setAnswer("Moo-d alert! Something went wrong. Check your internet or API key.");
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (answerLines.length > 0) {
-      let index = 0;
-      const interval = setInterval(() => {
-        setDisplayedLines((prev) => [...prev, answerLines[index]]);
-        index++;
-        if (index >= answerLines.length) clearInterval(interval);
-      }, 600); // Delay between each line
-      return () => clearInterval(interval);
-    }
-  }, [answerLines]);
 
   return (
     <div className="app">
@@ -104,12 +88,10 @@ function App() {
         </button>
       </form>
 
-      {displayedLines.length > 0 && (
+      {answer && (
         <div className="response-bubble">
           <strong>Answer:</strong>
-          {displayedLines.map((line, idx) => (
-            <p key={idx} className="fade-line">{line}</p>
-          ))}
+          <p>{answer}</p>
         </div>
       )}
     </div>

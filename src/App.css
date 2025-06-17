@@ -45,17 +45,9 @@ body {
   word-break: break-word;
 }
 
-/* Jiggle Cow-sistant */
+/* Optional jiggle for Cow-sistant only */
 .jiggle {
   display: inline-block;
-  animation: jiggle 3.5s infinite ease-in-out;
-}
-
-@keyframes jiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(1deg); }
-  50% { transform: rotate(-1deg); }
-  75% { transform: rotate(1deg); }
 }
 
 /* Speech bubble */
@@ -72,7 +64,6 @@ body {
   max-width: 240px;
   text-align: left;
   backdrop-filter: blur(4px);
-  animation: fadeIn 0.3s ease-in-out;
   z-index: 99;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
@@ -120,7 +111,6 @@ input::placeholder {
 
 @media (hover: hover) {
   .ask-button:hover {
-    animation: wiggle 0.3s ease-in-out;
     box-shadow: 0 0 12px 2px #9cf;
   }
 }
@@ -130,14 +120,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-@keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(1.5deg); }
-  50% { transform: rotate(-1.5deg); }
-  75% { transform: rotate(1.5deg); }
-}
-
-/* Response bubble */
+/* Response bubble (no animations) */
 .response-bubble {
   background-color: #ffffff20;
   border-radius: 1.5rem;
@@ -152,25 +135,7 @@ button:disabled {
   text-align: left;
 }
 
-/* Show lines instantly without animation */
-.response-bubble p span.line {
-  display: block;
-  opacity: 1;
-}
-
-/* Fade-in */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
+/* Mobile responsiveness */
 @media (max-width: 600px) {
   .app {
     padding: 1.5rem 1rem;
