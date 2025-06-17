@@ -132,23 +132,24 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* 🐮 Speech bubble — now above left ear */
+/* 🐮 Speech bubble — properly near cow’s left ear */
 .speech-bubble {
   position: absolute;
-  top: 3rem;
-  left: 6.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  top: 1.25rem;
+  left: 2.25rem;
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
-  padding: 0.65rem 1rem;
+  padding: 0.7rem 1rem;
   border-radius: 12px;
   font-style: italic;
   font-size: 0.95rem;
-  max-width: 280px;
+  max-width: 260px;
   text-align: left;
   backdrop-filter: blur(4px);
   animation: fadeIn 0.3s ease-in-out;
-  z-index: 10;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+  z-index: 15;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}w: 0 0 8px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes fadeIn {
