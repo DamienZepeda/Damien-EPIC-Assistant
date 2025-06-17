@@ -32,7 +32,7 @@ body {
   z-index: 5;
 }
 
-/* Title */
+/* Cow-sistant title */
 .cow-title {
   font-family: "Chewy", cursive;
   color: #e6f0ff;
@@ -45,17 +45,79 @@ body {
   word-break: break-word;
 }
 
-/* Jiggle only Cow-sistant */
-.jiggle {
-  display: inline-block;
-  animation: jiggle 3.5s infinite ease-in-out;
+/* Form layout */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-@keyframes jiggle {
+/* Input */
+input {
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: #2b2b2b;
+  color: #f1f1f1;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* Ask Button */
+.ask-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+@media (hover: hover) {
+  .ask-button:hover {
+    animation: wiggle 0.3s ease-in-out;
+    box-shadow: 0 0 12px 2px #9cf;
+  }
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Wiggle animation */
+@keyframes wiggle {
   0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(1deg); }
-  50% { transform: rotate(-1deg); }
-  75% { transform: rotate(1deg); }
+  25% { transform: rotate(1.5deg); }
+  50% { transform: rotate(-1.5deg); }
+  75% { transform: rotate(1.5deg); }
+}
+
+/* Response bubble */
+.response-bubble {
+  background-color: #ffffff20;
+  border-radius: 1.5rem;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  color: white;
+  max-width: 600px;
+  font-size: 1rem;
+  line-height: 1.5;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Fixed response text so it doesn’t cut off */
+.response-bubble p {
+  white-space: normal;
+  overflow-wrap: break-word;
+  animation: fadeIn 0.3s ease-in-out;
+  border: none;
 }
 
 /* Speech bubble */
@@ -87,87 +149,6 @@ body {
   border-color: rgba(255, 255, 255, 0.12) transparent transparent transparent;
 }
 
-/* Form */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-input {
-  padding: 12px 16px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background-color: #2b2b2b;
-  color: #f1f1f1;
-}
-
-input::placeholder {
-  color: #aaa;
-}
-
-.ask-button {
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.75rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
-}
-
-@media (hover: hover) {
-  .ask-button:hover {
-    animation: wiggle 0.3s ease-in-out;
-    box-shadow: 0 0 12px 2px #9cf;
-  }
-}
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-@keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(1.5deg); }
-  50% { transform: rotate(-1.5deg); }
-  75% { transform: rotate(1.5deg); }
-}
-
-/* Response */
-.response-bubble {
-  background-color: #ffffff20;
-  border-radius: 1.5rem;
-  padding: 1rem 1.25rem;
-  margin-top: 1rem;
-  color: white;
-  max-width: 600px;
-  font-size: 1rem;
-  line-height: 1.5;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-.response-bubble p {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid #fff;
-  animation: typing 2.5s steps(40, end), blink 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-/* Fade-in */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -179,7 +160,7 @@ button:disabled {
   }
 }
 
-/* Responsive */
+/* Mobile responsiveness */
 @media (max-width: 600px) {
   .app {
     padding: 1.5rem 1rem;
