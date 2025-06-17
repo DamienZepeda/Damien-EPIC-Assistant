@@ -87,4 +87,18 @@ function App() {
           onChange={(e) => setInput(e.target.value)}
         />
         <button type="submit" className="ask-button" disabled={loading}>
-          {loading ? "Moo-deling.
+          {loading ? "Moo-deling..." : "Ask"}
+        </button>
+      </form>
+
+      {answer && (
+        <div className="response-bubble">
+          <strong>Answer:</strong>
+          <p>{answer}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
