@@ -132,11 +132,11 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* 💬 Speech bubble — final, perfect placement above left ear */
+/* 💬 FINAL placement — exactly in the red circle */
 .speech-bubble {
   position: absolute;
-  top: 1rem;
-  left: 2.75rem;
+  top: -1.5rem;
+  left: 1.5rem;
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
   padding: 0.7rem 1rem;
