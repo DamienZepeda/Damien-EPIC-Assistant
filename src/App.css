@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
 /* Reset & base */
 * {
   margin: 0;
@@ -41,6 +43,26 @@ body {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.1);
   white-space: normal;
   word-break: break-word;
+}
+
+/* Cow image */
+.cow-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 650px;
+  transform: translate(-50%, -50%);
+  animation: jiggle 5s infinite ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes jiggle {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+  25% { transform: translate(-50%, -50%) rotate(1deg); }
+  50% { transform: translate(-50%, -50%) rotate(-1deg); }
+  75% { transform: translate(-50%, -50%) rotate(1deg); }
 }
 
 /* Form layout */
@@ -127,7 +149,7 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Speech bubble by cow's ear */
+/* Speech bubble */
 .speech-bubble {
   position: fixed;
   top: 18%;
@@ -167,6 +189,7 @@ button:disabled {
   }
 }
 
+/* Mobile responsiveness */
 @media (max-width: 600px) {
   .app {
     padding: 1.5rem 1rem;

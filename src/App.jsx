@@ -69,12 +69,23 @@ function App() {
 
   return (
     <div className="app">
+      {/* Jiggle-enabled cow image */}
+      <img
+        id="cow-image"
+        src="/images/cowagent.png"
+        alt="Cow-sistant"
+        className="cow-image"
+      />
+
+      {/* Floating intro bubble */}
       {bubbleText && <div className="speech-bubble">{bubbleText}</div>}
 
+      {/* Title */}
       <h1 className="cow-title">
         Your Friendly Neighborhood<br />Cow-sistant
       </h1>
 
+      {/* Input form */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -87,6 +98,7 @@ function App() {
         </button>
       </form>
 
+      {/* Answer display */}
       {answer && (
         <div className="response-bubble">
           <strong>Answer:</strong>
