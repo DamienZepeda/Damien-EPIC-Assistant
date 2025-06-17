@@ -132,22 +132,22 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* 🐮 FINAL: Speech bubble — precisely above cow’s left ear */
+/* 💬 Speech bubble — final, perfect placement above left ear */
 .speech-bubble {
   position: absolute;
-  top: 1.75rem;
-  left: 4.5rem;
+  top: 1rem;
+  left: 2.75rem;
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
   padding: 0.7rem 1rem;
   border-radius: 12px;
   font-style: italic;
   font-size: 0.95rem;
-  max-width: 260px;
+  max-width: 240px;
   text-align: left;
   backdrop-filter: blur(4px);
   animation: fadeIn 0.3s ease-in-out;
-  z-index: 15;
+  z-index: 20;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
