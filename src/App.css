@@ -119,5 +119,4 @@ button:disabled {
     0 0 10px #D0E3FF,
     2px 2px 6px rgba(0, 0, 0, 0.6);
   font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-}
-
+}  /* ← THIS is what you're missing */
