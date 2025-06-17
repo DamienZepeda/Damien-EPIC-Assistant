@@ -18,7 +18,7 @@ body {
 
 /* Full app container */
 .app {
-  background-color: rgba(30, 30, 30, 0.8); /* Transparent dark background over image */
+  background-color: rgba(30, 30, 30, 0.8);
   padding: 2rem 2.5rem;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
@@ -99,7 +99,7 @@ button:disabled {
   75% { transform: rotate(1.5deg); }
 }
 
-/* Loading animation (if used) */
+/* Loading animation */
 .loading-dots::after {
   content: " .";
   animation: dots 1.5s steps(3, end) infinite;
@@ -112,14 +112,13 @@ button:disabled {
   100% { content: " ."; }
 }
 
-/* Response container (default style) */
+/* Response container */
 .response {
   margin-top: 1rem;
   font-size: 1.1rem;
   color: #ffffff;
 }
 
-/* Fancy Chat Bubble Response */
 .response-bubble {
   background-color: #ffffff20;
   border-radius: 1.5rem;
@@ -133,23 +132,23 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* 🐮 Speech bubble — now in top right corner */
+/* 🐮 Speech bubble — near cow's left ear */
 .speech-bubble {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 6.5rem;
+  left: 3.5rem;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  padding: 0.75rem 1.25rem;
+  padding: 0.65rem 1rem;
   border-radius: 12px;
   font-style: italic;
-  font-size: 1rem;
-  max-width: 300px;
+  font-size: 0.95rem;
+  max-width: 280px;
   text-align: left;
   backdrop-filter: blur(4px);
   animation: fadeIn 0.3s ease-in-out;
   z-index: 10;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes fadeIn {
