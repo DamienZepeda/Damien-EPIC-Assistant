@@ -14,48 +14,30 @@ function App() {
     setAnswer("");
 
     try {
-const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-
-const res = await fetch("https://api.openai.com/v1/chat/completions", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${apiKey}`,
-  },
- body: JSON.stringify({
-  model: "gpt-3.5-turbo",
-  messages: [
-    {
-      role: "system",
-      content: "You are a helpful assistant that always answers with a cow-themed pun or joke related to the user's question, but also gives a real, helpful, high-level answer as if you're an expert in Epic workflows. Be informative, concise, and kind — and always include one cow pun or joke that ties into the topic."
-    },
-    {
-      role: "user",
-      content: input
-    }
-  ]
-})
-
-});
-
-
-
-
-
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-4",
+          messages: [{ role: "user", content: input }],
+        }),
+      });
 
       const data = await res.json();
-      const gptReply = data.choices?.[0]?.message?.content;
-      setAnswer(gptReply || "No response received.");
+      setAnswer(data.choices[0].message.content);
     } catch (err) {
-      setAnswer("Error fetching response. Check your API key or internet.");
-    } finally {
-      setLoading(false);
+      setAnswer("Oops! Something went wrong. Please try again.");
     }
+
+    setLoading(false);
   };
 
   return (
     <div className="app">
-      <h1>DAMIEN's EpicCoach Web</h1>
+      <h1 className="cow-title">Your Friendly Neighborhood Cow-sistant</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -76,4 +58,5 @@ const res = await fetch("https://api.openai.com/v1/chat/completions", {
     </div>
   );
 }
+
 export default App;
