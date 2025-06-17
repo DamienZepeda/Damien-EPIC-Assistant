@@ -8,7 +8,6 @@ function App() {
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
   const [bubbleText, setBubbleText] = useState("");
-  const [showBubble, setShowBubble] = useState(true);
 
   const greetings = [
     "Howdy human! I'm here to steer you through any Epic workflow.",
@@ -26,19 +25,14 @@ function App() {
   ];
 
   useEffect(() => {
-    const initialGreeting = greetings[Math.floor(Math.random() * greetings.length)];
-    setBubbleText(initialGreeting);
-    setShowBubble(true);
+    setBubbleText(greetings[Math.floor(Math.random() * greetings.length)]);
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setAnswer("");
-    setShowBubble(false); // hide bubble on submit
-
-    const phrase = thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)];
-    setBubbleText(phrase); // still update the phrase behind the scenes
+    setBubbleText(""); // hide bubble after question is asked
 
     try {
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -75,7 +69,7 @@ function App() {
 
   return (
     <div className="app">
-      {showBubble && <div className="speech-bubble">{bubbleText}</div>}
+      {bubbleText && <div className="speech-bubble">{bubbleText}</div>}
 
       <h1 className="cow-title">
         Your Friendly Neighborhood<br />Cow-sistant

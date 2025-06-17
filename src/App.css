@@ -7,8 +7,7 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background: url("/images/cowagent.png") no-repeat center center fixed;
   background-size: cover;
   color: #f1f1f1;
   min-height: 100vh;
@@ -16,17 +15,6 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: background-image 0.4s ease, color 0.3s ease;
-}
-
-body.theme-dark {
-  background-image: url("/Images/cowagent.png");
-  color: #f1f1f1;
-}
-
-body.theme-light {
-  background-image: url("/Images/cowagent-light.png");
-  color: #222;
 }
 
 /* App container */
@@ -42,6 +30,7 @@ body.theme-light {
   z-index: 5;
 }
 
+/* Cow-sistant title */
 .cow-title {
   color: #e6f0ff;
   font-size: 2.4rem;
@@ -54,12 +43,14 @@ body.theme-light {
   word-break: break-word;
 }
 
+/* Form layout */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+/* Input */
 input {
   padding: 12px 16px;
   font-size: 1rem;
@@ -73,6 +64,7 @@ input::placeholder {
   color: #aaa;
 }
 
+/* Ask Button */
 .ask-button {
   background-color: #4a90e2;
   color: white;
@@ -84,18 +76,6 @@ input::placeholder {
   transition: box-shadow 0.3s ease;
 }
 
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-@keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(1.5deg); }
-  50% { transform: rotate(-1.5deg); }
-  75% { transform: rotate(1.5deg); }
-}
-
 @media (hover: hover) {
   .ask-button:hover {
     animation: wiggle 0.3s ease-in-out;
@@ -103,24 +83,20 @@ button:disabled {
   }
 }
 
-.loading-dots::after {
-  content: " .";
-  animation: dots 1.5s steps(3, end) infinite;
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-@keyframes dots {
-  0%   { content: " ."; }
-  33%  { content: " .."; }
-  66%  { content: " ..."; }
-  100% { content: " ."; }
+/* Wiggle animation */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1.5deg); }
+  50% { transform: rotate(-1.5deg); }
+  75% { transform: rotate(1.5deg); }
 }
 
-.response {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  color: #ffffff;
-}
-
+/* Typing animation for answer text */
 .response p {
   overflow: hidden;
   white-space: nowrap;
@@ -137,6 +113,7 @@ button:disabled {
   50% { border-color: transparent }
 }
 
+/* Response bubble */
 .response-bubble {
   background-color: #ffffff20;
   border-radius: 1.5rem;
@@ -150,7 +127,7 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* 💬 Speech bubble near cow's ear */
+/* Speech bubble by cow's ear */
 .speech-bubble {
   position: fixed;
   top: 18%;
@@ -179,26 +156,6 @@ button:disabled {
   border-color: rgba(255, 255, 255, 0.12) transparent transparent transparent;
 }
 
-#cow-image:hover {
-  animation: bounce 0.5s ease-in-out;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-.cow-glow {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  top: 40%;
-  left: 47%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.05), transparent);
-  z-index: 1;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -210,7 +167,6 @@ button:disabled {
   }
 }
 
-/* 🌐 Mobile styles */
 @media (max-width: 600px) {
   .app {
     padding: 1.5rem 1rem;
@@ -224,7 +180,6 @@ button:disabled {
   .speech-bubble {
     top: 1rem;
     left: 1rem;
-    right: auto;
     max-width: 80%;
     font-size: 0.9rem;
   }
