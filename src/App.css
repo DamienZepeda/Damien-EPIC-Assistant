@@ -45,9 +45,17 @@ body {
   word-break: break-word;
 }
 
-/* Optional jiggle for Cow-sistant only */
+/* Jiggle animation for Cow-sistant */
 .jiggle {
   display: inline-block;
+  animation: jiggle 3.5s infinite ease-in-out;
+}
+
+@keyframes jiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  50% { transform: rotate(-1deg); }
+  75% { transform: rotate(1deg); }
 }
 
 /* Speech bubble */
