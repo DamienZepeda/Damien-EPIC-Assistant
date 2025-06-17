@@ -26,7 +26,6 @@ function App() {
   ];
 
   useEffect(() => {
-    // On load, show a random greeting
     setBubbleText(greetings[Math.floor(Math.random() * greetings.length)]);
     setShowBubble(true);
   }, []);
@@ -36,9 +35,11 @@ function App() {
     setLoading(true);
     setAnswer("");
 
+    // Hide bubble immediately
+    setShowBubble(false);
+
     const phrase = thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)];
-    setBubbleText(phrase);
-    setShowBubble(true);
+    setBubbleText(phrase); // still update the phrase in case we want to use it later
 
     try {
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -66,14 +67,8 @@ function App() {
       const data = await res.json();
       const gptReply = data.choices?.[0]?.message?.content;
       setAnswer(gptReply || "No response received.");
-      setBubbleText(greetings[Math.floor(Math.random() * greetings.length)]);
-
-      // Auto-hide the speech bubble after 4 seconds
-      setTimeout(() => setShowBubble(false), 4000);
     } catch (err) {
       setAnswer("Moo-d alert! Something went wrong. Check your internet or API key.");
-      setBubbleText("Whoops! I lost my herd... try again soon.");
-      setTimeout(() => setShowBubble(false), 4000);
     } finally {
       setLoading(false);
     }
