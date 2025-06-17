@@ -45,7 +45,7 @@ body {
   word-break: break-word;
 }
 
-/* Jiggle Cow-sistant if needed */
+/* Jiggle Cow-sistant */
 .jiggle {
   display: inline-block;
   animation: jiggle 3.5s infinite ease-in-out;
@@ -152,24 +152,10 @@ button:disabled {
   text-align: left;
 }
 
-/* Line-by-line typewriter effect */
+/* Show lines instantly without animation */
 .response-bubble p span.line {
   display: block;
-  opacity: 0;
-  animation: fadeLine 0.3s ease-in-out forwards;
-}
-
-.response-bubble p span.line:nth-child(1) { animation-delay: 0.1s; }
-.response-bubble p span.line:nth-child(2) { animation-delay: 0.4s; }
-.response-bubble p span.line:nth-child(3) { animation-delay: 0.7s; }
-.response-bubble p span.line:nth-child(4) { animation-delay: 1s; }
-.response-bubble p span.line:nth-child(5) { animation-delay: 1.3s; }
-.response-bubble p span.line:nth-child(6) { animation-delay: 1.6s; }
-.response-bubble p span.line:nth-child(7) { animation-delay: 1.9s; }
-.response-bubble p span.line:nth-child(8) { animation-delay: 2.2s; }
-
-@keyframes fadeLine {
-  to { opacity: 1; }
+  opacity: 1;
 }
 
 /* Fade-in */

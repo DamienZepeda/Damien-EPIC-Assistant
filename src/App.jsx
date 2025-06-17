@@ -78,7 +78,7 @@ function App() {
         setDisplayedLines((prev) => [...prev, answerLines[index]]);
         index++;
         if (index >= answerLines.length) clearInterval(interval);
-      }, 600); // adjust delay here if needed
+      }, 600); // Delay between each line
       return () => clearInterval(interval);
     }
   }, [answerLines]);
