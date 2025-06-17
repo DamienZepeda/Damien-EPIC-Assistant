@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
@@ -7,11 +7,27 @@ function App() {
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isDay, setIsDay] = useState(false);
+  const [thinkingPhrase, setThinkingPhrase] = useState("");
+
+  const thinkingPhrases = [
+    "Milking the data...",
+    "Churning through charts...",
+    "Gathering workflow hay...",
+    "Grazing on Epic logs...",
+    "Cooking up a mooo-velous answer..."
+  ];
+
+  const toggleTheme = () => {
+    setIsDay(!isDay);
+    document.body.className = isDay ? "night" : "day";
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setAnswer("");
+    setThinkingPhrase(thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)]);
 
     try {
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -48,9 +64,14 @@ function App() {
 
   return (
     <div className="app">
+      <button onClick={toggleTheme} className="theme-toggle">
+        {isDay ? "🌙 Barn Night" : "🌞 Pasture Day"}
+      </button>
+
       <h1 className="cow-title">
         Your Friendly Neighborhood<br />Cow-sistant
       </h1>
+
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -58,12 +79,13 @@ function App() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button type="submit" disabled={loading}>
-          {loading ? "Chewing the cud..." : "Ask"}
+        <button type="submit" className="ask-button" disabled={loading}>
+          {loading ? thinkingPhrase : "Ask"}
         </button>
       </form>
+
       {answer && (
-        <div className="response">
+        <div className="response-bubble">
           <strong>Answer:</strong>
           <p>{answer}</p>
         </div>
