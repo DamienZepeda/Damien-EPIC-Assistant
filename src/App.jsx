@@ -85,7 +85,7 @@ function App() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Ask a workflow question..."
+          placeholder="Got an Epic workflow question? I’m all ears."
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />

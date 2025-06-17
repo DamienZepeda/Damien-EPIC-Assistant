@@ -207,3 +207,47 @@ button:disabled {
     transform: translateY(0);
   }
 }
+@media (max-width: 600px) {
+  .app {
+    padding: 1.5rem 1rem;
+    max-width: 95%;
+  }
+
+  .cow-title {
+    font-size: 1.6rem;
+    white-space: normal;
+  }
+
+  .speech-bubble {
+    top: 1rem;
+    left: 1rem;
+    right: auto;
+    max-width: 80%;
+    font-size: 0.9rem;
+  }
+
+  input {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  .ask-button {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .response-bubble {
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+  }
+}
+.cow-title {
+  white-space: normal; /* was: nowrap */
+  word-break: break-word;
+}
+@media (hover: hover) {
+  .ask-button:hover {
+    animation: wiggle 0.3s ease-in-out;
+    box-shadow: 0 0 12px 2px #9cf;
+  }
+}
