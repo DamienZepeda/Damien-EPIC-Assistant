@@ -132,11 +132,11 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* 🐮 Speech bubble — near cow's left ear */
+/* 🐮 Speech bubble — now above left ear */
 .speech-bubble {
   position: absolute;
-  top: 6.5rem;
-  left: 3.5rem;
+  top: 3rem;
+  left: 6.5rem;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
   padding: 0.65rem 1rem;
