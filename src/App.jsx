@@ -13,7 +13,7 @@ function App() {
     "Howdy human! I'm here to steer you through any Epic workflow.",
     "Moo there! Got a workflow problem? Let’s milk it for answers.",
     "Epic questions? I herd you. Let’s solve it together.",
-    "You’ve got the question, I’ve got the moo-ves."
+    "You’ve got the question, I’ve got the moo-ves.",
   ];
 
   const thinkingPhrases = [
@@ -21,7 +21,7 @@ function App() {
     "Churning through charts...",
     "Gathering workflow hay...",
     "Grazing on Epic logs...",
-    "Cooking up a mooo-velous answer..."
+    "Cooking up a mooo-velous answer...",
   ];
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function App() {
     e.preventDefault();
     setLoading(true);
     setAnswer("");
-    setBubbleText(""); // hide bubble after question is asked
+    setBubbleText("");
 
     try {
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -69,7 +69,6 @@ function App() {
 
   return (
     <div className="app">
-      {/* Jiggle-enabled cow image */}
       <img
         id="cow-image"
         src="/images/cowagent.png"
@@ -77,15 +76,13 @@ function App() {
         className="cow-image"
       />
 
-      {/* Floating intro bubble */}
       {bubbleText && <div className="speech-bubble">{bubbleText}</div>}
 
-      {/* Title */}
       <h1 className="cow-title">
-        Your Friendly Neighborhood<br />Cow-sistant
+        Your Friendly Neighborhood<br />
+        <span className="cow-wiggle">Cow-sistant</span>
       </h1>
 
-      {/* Input form */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -98,7 +95,6 @@ function App() {
         </button>
       </form>
 
-      {/* Answer display */}
       {answer && (
         <div className="response-bubble">
           <strong>Answer:</strong>
