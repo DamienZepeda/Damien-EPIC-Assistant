@@ -14,6 +14,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 /* Full app container */
@@ -26,14 +27,7 @@ body {
   max-width: 600px;
   text-align: center;
   position: relative;
-}
-
-/* Title */
-h1 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: #90caf9;
-  margin-bottom: 1.5rem;
+  z-index: 5;
 }
 
 /* Cow-sistant title */
@@ -46,6 +40,14 @@ h1 {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.1);
   font-family: "Segoe UI", "Helvetica Neue", sans-serif;
   white-space: nowrap;
+}
+
+/* Title */
+h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #90caf9;
+  margin-bottom: 1.5rem;
 }
 
 /* Form layout */
@@ -132,11 +134,12 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* 💬 FINAL placement — exactly in the red circle */
+/* 💬 FINAL: speech bubble exactly in circled space, outside black box */
 .speech-bubble {
   position: absolute;
-  top: -1.5rem;
-  left: 1.5rem;
+  top: 18%;
+  left: 16%;
+  transform: translate(-50%, -50%);
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
   padding: 0.7rem 1rem;
@@ -147,7 +150,7 @@ button:disabled {
   text-align: left;
   backdrop-filter: blur(4px);
   animation: fadeIn 0.3s ease-in-out;
-  z-index: 20;
+  z-index: 10;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
