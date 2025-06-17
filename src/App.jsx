@@ -32,7 +32,7 @@ function App() {
     e.preventDefault();
     setLoading(true);
     setAnswer("");
-    setBubbleText("");
+    setBubbleText(""); // hide bubble after submit
 
     try {
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -80,13 +80,13 @@ function App() {
       {/* Greeting bubble */}
       {bubbleText && <div className="speech-bubble">{bubbleText}</div>}
 
-      {/* Title with jiggle */}
+      {/* Title */}
       <h1 className="cow-title">
         Your Friendly Neighborhood<br />
-        <span className="cow-wiggle">Cow-sistant</span>
+        Cow-sistant
       </h1>
 
-      {/* Question input */}
+      {/* Input form */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -99,7 +99,7 @@ function App() {
         </button>
       </form>
 
-      {/* Assistant response */}
+      {/* Response */}
       {answer && (
         <div className="response-bubble">
           <strong>Answer:</strong>
