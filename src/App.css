@@ -7,23 +7,15 @@
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-}
-
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: url("/images/cowagent.png") no-repeat center center;
+  background: url("/images/cowagent.png") no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   color: #f1f1f1;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   position: relative;
 }
 

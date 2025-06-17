@@ -32,7 +32,7 @@ function App() {
     e.preventDefault();
     setLoading(true);
     setAnswer("");
-    setBubbleText(""); // hide bubble after submit
+    setBubbleText(""); // hide greeting when question is asked
 
     try {
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -69,24 +69,12 @@ function App() {
 
   return (
     <div className="app">
-      {/* Background cow image */}
-      <img
-        id="cow-image"
-        src="/images/cowagent.png"
-        alt="Cow-sistant"
-        className="cow-image"
-      />
-
-      {/* Greeting bubble */}
       {bubbleText && <div className="speech-bubble">{bubbleText}</div>}
 
-      {/* Title */}
       <h1 className="cow-title">
-        Your Friendly Neighborhood<br />
-        Cow-sistant
+        Your Friendly Neighborhood<br />Cow-sistant
       </h1>
 
-      {/* Input form */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -99,7 +87,6 @@ function App() {
         </button>
       </form>
 
-      {/* Response */}
       {answer && (
         <div className="response-bubble">
           <strong>Answer:</strong>
