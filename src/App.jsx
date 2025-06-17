@@ -35,28 +35,31 @@ function App() {
     setLoading(false);
   };
 
-  return (
-    <div className="app">
-      <h1 className="cow-title">Your Friendly Neighborhood Cow-sistant</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Ask a workflow question..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Thinking..." : "Ask"}
-        </button>
-      </form>
-      {answer && (
-        <div className="response">
-          <strong>Answer:</strong>
-          <p>{answer}</p>
-        </div>
-      )}
-    </div>
-  );
+return (
+  <div className="app">
+    <h1 className="cow-title">
+      Your Friendly Neighborhood<br />Cow-sistant
+    </h1>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Ask a workflow question..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button type="submit" disabled={loading}>
+        {loading ? "Thinking..." : "Ask"}
+      </button>
+    </form>
+    {answer && (
+      <div className="response">
+        <strong>Answer:</strong>
+        <p>{answer}</p>
+      </div>
+    )}
+  </div>
+);
+
 }
 
 export default App;
