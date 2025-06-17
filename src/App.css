@@ -45,6 +45,19 @@ body {
   word-break: break-word;
 }
 
+/* Jiggle only Cow-sistant */
+.jiggle {
+  display: inline-block;
+  animation: jiggle 3.5s infinite ease-in-out;
+}
+
+@keyframes jiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  50% { transform: rotate(-1deg); }
+  75% { transform: rotate(1deg); }
+}
+
 /* Form layout */
 form {
   display: flex;
@@ -90,7 +103,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Wiggle animation */
 @keyframes wiggle {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(1.5deg); }

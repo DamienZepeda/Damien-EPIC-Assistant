@@ -6,6 +6,7 @@ const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 function App() {
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState("");
+  const [typedText, setTypedText] = useState("");
   const [loading, setLoading] = useState(false);
   const [bubbleText, setBubbleText] = useState("");
 
@@ -32,6 +33,7 @@ function App() {
     e.preventDefault();
     setLoading(true);
     setAnswer("");
+    setTypedText("");
     setBubbleText("");
 
     try {
@@ -58,8 +60,19 @@ function App() {
       });
 
       const data = await res.json();
-      const gptReply = data.choices?.[0]?.message?.content;
-      setAnswer(gptReply || "No response received.");
+      const gptReply = data.choices?.[0]?.message?.content || "No response received.";
+      setAnswer(gptReply);
+      setTypedText("");
+
+      let index = 0;
+      function typeWriter() {
+        if (index < gptReply.length) {
+          setTypedText((prev) => prev + gptReply.charAt(index));
+          index++;
+          setTimeout(typeWriter, 25);
+        }
+      }
+      typeWriter();
     } catch (err) {
       setAnswer("Moo-d alert! Something went wrong. Check your internet or API key.");
     } finally {
@@ -69,7 +82,15 @@ function App() {
 
   return (
     <div className="app">
-      {/* Cow speech bubble */}
+      {/* Cow image */}
+      <img
+        id="cow-image"
+        src="/images/cowagent.png"
+        alt="Cow-sistant"
+        className="cow-image"
+      />
+
+      {/* Bubble */}
       {bubbleText && <div className="speech-bubble">{bubbleText}</div>}
 
       {/* Title */}
@@ -78,7 +99,6 @@ function App() {
         <span className="jiggle">Cow-sistant</span>
       </h1>
 
-      {/* Input */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -91,11 +111,10 @@ function App() {
         </button>
       </form>
 
-      {/* Output */}
-      {answer && (
+      {typedText && (
         <div className="response-bubble">
           <strong>Answer:</strong>
-          <p>{answer}</p>
+          <p>{typedText}</p>
         </div>
       )}
     </div>
