@@ -10,13 +10,15 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: url("/Images/856bea66-69f4-4da1-b0e5-d72848182e3d.png") no-repeat center center fixed;
-  background-size: cover;
+  background-size: contain;
+  background-color: #121212;
   color: #f1f1f1;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 
 /* Full app container */
