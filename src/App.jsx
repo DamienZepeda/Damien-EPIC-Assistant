@@ -32,7 +32,7 @@ function App() {
     e.preventDefault();
     setLoading(true);
     setAnswer("");
-    setBubbleText("");
+    setBubbleText(thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)]);
 
     try {
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -75,7 +75,7 @@ function App() {
       {/* Title */}
       <h1 className="cow-title">
         Your Friendly Neighborhood<br />
-        <span className="jiggle">Cow-sistant</span>
+        <span className="cow-wiggle">Cow-sistant</span>
       </h1>
 
       {/* Input */}
@@ -95,7 +95,7 @@ function App() {
       {answer && (
         <div className="response-bubble">
           <strong>Answer:</strong>
-          <p>{answer}</p>
+          <span className="animated-answer">{answer}</span>
         </div>
       )}
     </div>
