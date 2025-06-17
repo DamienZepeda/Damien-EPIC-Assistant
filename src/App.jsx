@@ -79,5 +79,4 @@ const res = await fetch("https://api.openai.com/v1/chat/completions", {
   );
 }
 export default App;
-npm run dev
 
